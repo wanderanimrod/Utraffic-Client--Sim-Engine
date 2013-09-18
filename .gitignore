@@ -1,3 +1,6 @@
+#Pycharm files
+*.idea*
+
 *.py[cod]
 
 # C extensions
