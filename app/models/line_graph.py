@@ -1,4 +1,4 @@
-from Queue import Queue
+from Queue import Queue, Empty
 
 
 class LineGraph:
@@ -10,7 +10,8 @@ class LineGraph:
         self.__data.put(data_point)
 
     def get_data_point(self):
-        if self.__data.empty():
+        try:
+            return self.__data.get_nowait()
+        except Empty:
             return None
-        return self.__data.get()
 
