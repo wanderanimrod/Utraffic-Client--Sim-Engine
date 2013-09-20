@@ -15,3 +15,9 @@ class LineGraph:
         except Empty:
             return None
 
+    def get_data(self):
+        data = []
+        while not self.__data.empty():
+            data.append(self.get_data_point())
+        return data
+
