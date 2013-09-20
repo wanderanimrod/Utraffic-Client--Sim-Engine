@@ -10,5 +10,7 @@ class LineGraph:
         self.__data.put(data_point)
 
     def get_data_point(self):
+        if self.__data.empty():
+            return None
         return self.__data.get()
 
