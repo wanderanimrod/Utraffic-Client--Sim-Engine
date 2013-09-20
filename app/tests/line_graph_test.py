@@ -1,6 +1,6 @@
 from unittest import TestCase
-from data_point import DataPoint
-from line_graph import LineGraph
+from models.data_point import DataPoint
+from models.line_graph import LineGraph
 
 
 class LineGraphTest(TestCase):
