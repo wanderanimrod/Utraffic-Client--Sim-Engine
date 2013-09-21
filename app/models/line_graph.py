@@ -3,7 +3,8 @@ from Queue import Queue, Empty
 
 class LineGraph:
 
-    def __init__(self):
+    def __init__(self, graph_id=0):
+        self.graph_id = graph_id
         self.__data = Queue()
 
     def add_data_point(self, data_point):
@@ -20,4 +21,3 @@ class LineGraph:
         while not self.__data.empty():
             data.append(self.get_data_point())
         return data
-
