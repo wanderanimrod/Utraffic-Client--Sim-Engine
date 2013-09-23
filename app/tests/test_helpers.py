@@ -1,5 +1,6 @@
 from models.line_graph import LineGraph
 from models.data_point import DataPoint
+from models.vehicle import Vehicle
 
 
 def make_data_point():
@@ -20,3 +21,12 @@ def make_graph_with_two_different_data_points():
         for data_point in data_points:
             graph.add_data_point(data_point)
         return graph, data_points
+
+
+def make_fully_constituted_vehicle(vehicle_id=1):
+    vehicle = Vehicle(vehicle_id, 60)
+    vehicle.acceleration = 10.0
+    vehicle.velocity = 50.0
+    vehicle.lane = 0
+    vehicle.position = 150.0
+    return vehicle
