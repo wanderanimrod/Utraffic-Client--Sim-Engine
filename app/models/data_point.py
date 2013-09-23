@@ -6,6 +6,3 @@ class DataPoint:
 
     def json(self):
         return {'value': self.value, 'time': self.time}
-
-    def __str__(self):
-        return str(self.json())
