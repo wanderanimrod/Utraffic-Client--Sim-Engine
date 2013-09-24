@@ -7,4 +7,6 @@ db = app.get_db()
 def get_vehicle(vehicle_id):
     global db
     vehicle_dict = db.hgetall(vehicle_id)
-    return Vehicle.make_from_dict(vehicle_dict)
+    if vehicle_dict != {}:
+        return Vehicle.make_from_dict(vehicle_dict)
+    return None
