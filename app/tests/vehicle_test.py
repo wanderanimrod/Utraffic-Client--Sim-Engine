@@ -20,8 +20,13 @@ class VehicleTest(TestCase):
 
     def test_should_convert_valid_dict_into_valid_vehicle(self):
         vehicle_dict = {'acceleration': 10.0, 'desired_velocity': 60,
-                         'lane': 0, 'position': 150.0, 'velocity': 50, 'id': 1}
-        expected_vehicle = make_fully_constituted_vehicle()
+                        'lane': 0, 'position': 150.0, 'velocity': 50, 'id': 1}
         constructed_vehicle = Vehicle.make_from_dict(vehicle_dict)
         self.assertTrue(self.vehicle_has_all_fields_and_values_in_dict(constructed_vehicle, vehicle_dict))
+
+    def vehicle_has_all_fields_and_values_in_dict(self, constructed_vehicle, vehicle_dict):
+        for key in vehicle_dict.keys():
+            if getattr(constructed_vehicle, key) != vehicle_dict[key]:
+                return False
+        return True
 

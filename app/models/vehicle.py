@@ -15,4 +15,8 @@ class Vehicle:
 
     @staticmethod
     def make_from_dict(vehicle_dict):
-        pass
+        vehicle = Vehicle(vehicle_dict['id'], vehicle_dict['desired_velocity'])
+        for key in vehicle_dict.keys():
+            setattr(vehicle, key, vehicle_dict[key])
+        return vehicle
+
