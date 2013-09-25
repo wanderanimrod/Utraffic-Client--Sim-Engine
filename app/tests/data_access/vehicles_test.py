@@ -7,8 +7,9 @@ from tests.test_helpers import make_fully_constituted_vehicle
 
 class VehiclesTest(TestCase):
 
-    def setUp(self):
-        self.db = redis.StrictRedis(host=settings.host, port=settings.port, db=0)
+    @classmethod
+    def setUpClass(cls):
+        cls.db = redis.StrictRedis(host=settings.host, port=settings.port, db=0)
 
     def test_should_get_vehicle_by_id_from_db(self):
         vehicle = self.db_insert_vehicle()
