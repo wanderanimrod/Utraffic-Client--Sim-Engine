@@ -20,3 +20,6 @@ class Vehicle:
             setattr(vehicle, key, vehicle_dict[key])
         return vehicle
 
+    def __str__(self):
+        return self.id
+
