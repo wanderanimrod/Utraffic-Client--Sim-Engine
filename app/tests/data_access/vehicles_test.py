@@ -1,8 +1,8 @@
 from unittest import TestCase
 from data_access import settings
-from data_access.vehicles import get_vehicles
+from data_access.vehicles import get_vehicle_snapshots
 import redis
-from tests.test_helpers import make_fully_constituted_vehicle
+from tests.test_helpers import make_fully_constituted_vehicle_snapshot
 
 
 class VehiclesTest(TestCase):
@@ -11,22 +11,22 @@ class VehiclesTest(TestCase):
     def setUpClass(cls):
         cls.db = redis.StrictRedis(host=settings.host, port=settings.port, db=0)
 
-    def test_get_vehicles_should_get_multiple_vehicles_from_the_db_by_id(self):
-        vehicle_one = make_fully_constituted_vehicle(vehicle_id="vehicle:1")
-        vehicle_two = make_fully_constituted_vehicle(vehicle_id="vehicle:2")
-        for vehicle in [vehicle_one, vehicle_two]:
-            self.db_insert_vehicle(vehicle_id=vehicle.id)
-        returned_vehicles = get_vehicles([vehicle_one.id, vehicle_two.id])
-        self.assertEquals(returned_vehicles, [vehicle_one, vehicle_two])
+    def test_get_vehicle_snapshots_should_get_multiple_vehicle_snapshots_from_the_db_by_id(self):
+        snapshot_one = make_fully_constituted_vehicle_snapshot(vehicle_id=1, timestamp=0)
+        snapshot_two = make_fully_constituted_vehicle_snapshot(vehicle_id=2, timestamp=0)
+        [self.db_insert_vehicle_snapshot(snapshot) for snapshot in [snapshot_one, snapshot_two]]
+        returned_vehicle_snapshots = get_vehicle_snapshots([snapshot_one.id, snapshot_two.id])
+        self.assertEquals(returned_vehicle_snapshots, [snapshot_one, snapshot_two])
 
     def test_get_vehicles_should_return_empty_list_if_no_vehicles_with_specified_ids_exist_in_the_db(self):
-        self.assertEquals(get_vehicles(["NON_EXISTENT_ID_1", "NON_EXISTENT_ID_2"]), [])
+        self.assertEquals(get_vehicle_snapshots(["NON_EXISTENT_ID_1", "NON_EXISTENT_ID_2"]), [])
 
     def test_get_vehicles_should_delete_all_returned_vehicles_from_db(self):
         pass
 
-    def db_insert_vehicle(self, vehicle_id='test_vehicle'):
-        vehicle = make_fully_constituted_vehicle(vehicle_id=vehicle_id)
-        vehicle_dict = vehicle.__dict__
-        self.db.hmset(vehicle_id, vehicle_dict)
-        return vehicle
+    def db_insert_vehicle_snapshot(self, vehicle_snapshot):
+        snapshot = make_fully_constituted_vehicle_snapshot(vehicle_id=vehicle_snapshot.vehicle_id,
+                                                           timestamp=vehicle_snapshot.timestamp)
+        snapshot_dict = snapshot.__dict__
+        self.db.hmset(snapshot.id, snapshot_dict)
+        return snapshot

@@ -1,17 +1,17 @@
 import app
-from models.vehicle import Vehicle
+from models.vehicle_snapshot import VehicleSnapshot
 
 db = app.get_db()
 
 
-def get_vehicles(vehicle_ids):
+def get_vehicle_snapshots(snapshot_ids):
     global db
     pipeline = db.pipeline()
-    for vehicle_id in vehicle_ids:
-        pipeline.hgetall(vehicle_id)
+    for snapshot_id in snapshot_ids:
+        pipeline.hgetall(snapshot_id)
     vehicles_dict_list = pipeline.execute()
     vehicles = []
     for vehicle_dict in vehicles_dict_list:
         if vehicle_dict != {}:
-            vehicles.append(Vehicle.make_from_dict(vehicle_dict))
+            vehicles.append(VehicleSnapshot.make_from_dict(vehicle_dict))
     return vehicles

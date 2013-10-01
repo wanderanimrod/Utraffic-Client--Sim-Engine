@@ -1,6 +1,6 @@
 from models.line_graph import LineGraph
 from models.data_point import DataPoint
-from models.vehicle import Vehicle
+from models.vehicle_snapshot import VehicleSnapshot
 
 
 def make_data_point():
@@ -23,10 +23,11 @@ def make_graph_with_two_different_data_points():
         return graph, data_points
 
 
-def make_fully_constituted_vehicle(vehicle_id=1):
-    vehicle = Vehicle(vehicle_id, 60)
-    vehicle.acceleration = 10.0
-    vehicle.velocity = 50.0
-    vehicle.lane = 0
-    vehicle.position = 150.0
-    return vehicle
+def make_fully_constituted_vehicle_snapshot(vehicle_id=1, timestamp=0):
+    snapshot = VehicleSnapshot(vehicle_id, timestamp)
+    snapshot.acceleration = 10.0
+    snapshot.velocity = 50.0
+    snapshot.lane = 0
+    snapshot.position = 150.0
+    snapshot.desired_velocity = 60
+    return snapshot
