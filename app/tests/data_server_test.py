@@ -61,4 +61,3 @@ class DataServerTest(TestCase):
     def make_data_server_with_one_visualisation(self, visualisation=test_helpers.make_line_graph()):
         self.data_server.add_visualisation(visualisation)
         return self.data_server, visualisation
-
