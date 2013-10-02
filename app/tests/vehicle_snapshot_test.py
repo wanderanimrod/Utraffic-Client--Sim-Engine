@@ -1,5 +1,4 @@
 from unittest import TestCase
-from mock import Mock
 from tests.test_helpers import make_fully_constituted_vehicle_snapshot
 from models.vehicle_snapshot import VehicleSnapshot
 
@@ -51,7 +50,8 @@ class VehicleSnapshotTest(TestCase):
         expected_id = 'vehicle:1, timestamp:10'
         self.assertEquals(snapshot.id, expected_id)
 
-    def vehicle_snapshot_has_all_fields_and_values_in_dict(self, constructed_snapshot, snapshot_dict):
+    @staticmethod
+    def vehicle_snapshot_has_all_fields_and_values_in_dict(constructed_snapshot, snapshot_dict):
         for key in snapshot_dict.keys():
             if getattr(constructed_snapshot, key) != snapshot_dict[key]:
                 return False
