@@ -1,3 +1,7 @@
+Try out semantic UI
+
+Here's the link to the js-fiddle with the live d3.js graph http://jsfiddle.net/NbeXY/
+
 Refactor make_full_vehicle_snapshot to take snapshot_id instead of vehicle id and timestamp
 
 We should add data points to data server (and hence to the graph) in batches and not a data point at time to save on the
