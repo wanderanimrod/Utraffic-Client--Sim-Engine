@@ -1,5 +1,4 @@
 from unittest import TestCase
-import app
 from data_access.database import get_db
 
 
