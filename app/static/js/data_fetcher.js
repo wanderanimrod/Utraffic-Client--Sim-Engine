@@ -2,11 +2,11 @@ console.log("Data fetcher loaded!");
 dataOut = $("#data");
 
 var fetchData = function() {
-    var requestUrl = "http://localhost:5000/get_data/10/";
+    var requestUrl = "get_data/10/";
     var request = new XMLHttpRequest();
 
     request.onreadystatechange = function() {
-        if(request.readyState == 4) {
+        if(request.readyState == 4 && request.status == 200) {
             console.log(request.responseText);
             var dataJson = JSON.parse(request.responseText);
             plugDataIntoPage(dataJson);
@@ -18,7 +18,7 @@ var fetchData = function() {
 };
 
 var plugDataIntoPage = function(dataJson) {
-    dataOut.text(dataJson.visualisation)
+    dataOut.text(JSON.stringify(dataJson))
 };
 
 fetchData();

@@ -1,7 +1,7 @@
-import app
+from data_access.database import get_db
 from models.vehicle_snapshot import VehicleSnapshot
 
-db = app.get_db()
+db = get_db()
 
 
 def get_vehicle_snapshots(snapshot_ids):
