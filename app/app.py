@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 import flask
 import redis
 from tests.test_utils.setup_some_static_data import get_data_server
