@@ -1,6 +1,9 @@
 ** Create a web-client facing API that will translate requests for objects' properties into requests for data points
 from the data server. So, we can create the API versioned such that a request to
-/get_data?object=vehicle&id=0&property=acceleration returns all acceleration data points for a vehicle with id=0
+/v1/vehicles/0?fields=acceleration,velocity returns all acceleration and velocity data points for a vehicle with id=0
+
+Ensure javascript opens a persistent connection to the server for fetching the same kind of data through the lifetime
+of the simulation (test this)
 
 Try out semantic UI
 
