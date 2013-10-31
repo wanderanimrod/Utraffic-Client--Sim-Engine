@@ -1,6 +1,6 @@
 #Pycharm files
 *.idea*
-visualiser-virtualenv/*
+virtualenv/*
 *.py[cod]
 
 # C extensions
