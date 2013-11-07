@@ -8,7 +8,7 @@ app.db = None
 app.data_server = None
 
 
-@app.route('/get_data/<visualisation>/')
+@app.route('/')
 def get_data(visualisation=0):
     return flask.jsonify(
         {
