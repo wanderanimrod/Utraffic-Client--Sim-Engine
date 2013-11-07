@@ -1,10 +1,10 @@
 from Queue import Queue, Empty
 
 
-class LineGraph:
+class Series:
 
-    def __init__(self, graph_id=0):
-        self.graph_id = graph_id
+    def __init__(self, series_id=0):
+        self.series_id = series_id
         self.__data = Queue()
 
     def add_data_point(self, data_point):

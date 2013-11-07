@@ -1,4 +1,4 @@
-from models.line_graph import LineGraph
+from models.series import Series
 from models.data_point import DataPoint
 from models.vehicle_snapshot import VehicleSnapshot
 
@@ -7,20 +7,20 @@ def make_data_point():
     return DataPoint(10, 10)
 
 
-def make_line_graph(graph_id=0):
-    return LineGraph(graph_id=graph_id)
+def make_series(series_id=0):
+    return Series(series_id=series_id)
 
 
 def make_two_different_data_points():
     return [DataPoint(10, 0), DataPoint(20, 10)]
 
 
-def make_graph_with_two_different_data_points():
-        graph = make_line_graph()
+def make_series_with_two_different_data_points():
+        series = make_series()
         data_points = make_two_different_data_points()
         for data_point in data_points:
-            graph.add_data_point(data_point)
-        return graph, data_points
+            series.add_data_point(data_point)
+        return series, data_points
 
 
 def make_fully_constituted_vehicle_snapshot(vehicle_id=1, timestamp=0):
