@@ -4,19 +4,12 @@ from web_api.routes import setup_api_routes as activate_web_api_routes
 
 app = Flask(__name__)
 app.debug = True
-
 app.db = None
-app.data_server = None
 
 
 @app.route('/')
-def get_data(visualisation=0):
-    return flask.jsonify(
-        {
-            "data": [],
-            "visualisation": visualisation
-        }
-    )
+def get_data():
+    return {"Message": "The Utraffic API is now running!"}
 
 activate_web_api_routes(app)
 
