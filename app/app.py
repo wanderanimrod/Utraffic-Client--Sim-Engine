@@ -9,7 +9,7 @@ app.db = None
 
 @app.route('/')
 def get_data():
-    return {"Message": "The Utraffic API is now running!"}
+    return flask.jsonify({"Message": "The Utraffic API is now running!"})
 
 activate_web_api_routes(app)
 
