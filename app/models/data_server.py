@@ -4,14 +4,14 @@ class DataServer:
         self.series = []
 
     def add_series(self, series):
-        series.graph_id = self.next_series_id()
+        series.series_id = self.next_series_id()
         self.series.append(series)
-        return series.graph_id
+        return series.series_id
 
     def find_max_series_id(self):
         max_id = None
         for series in self.series:
-            current_series_id = series.graph_id
+            current_series_id = series.series_id
             if current_series_id > max_id:
                 max_id = current_series_id
         return max_id
@@ -32,6 +32,6 @@ class DataServer:
 
     def find_series_by_id(self, series_id):
         for series in self.series:
-            if series.graph_id == series_id:
+            if series.series_id == series_id:
                 return series
         return None

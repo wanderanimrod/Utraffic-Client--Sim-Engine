@@ -9,10 +9,13 @@ class DataServerTest(TestCase):
     def setUp(self):
         self.data_server = DataServer()
 
+    def tearDown(self):
+        self.data_server.series = []
+
     def test_should_assign_id_to_every_series_added(self):
-        line_graph = test_helpers.make_series()
-        graph_id = self.data_server.add_series(line_graph)
-        self.assertIsNotNone(graph_id)
+        series = test_helpers.make_series()
+        series_id = self.data_server.add_series(series)
+        self.assertIsNotNone(series_id)
 
     def test_next_series_id_should_be_1_greater_than_current_maximum_id(self):
         data_server = self.make_data_server_with_two_series()
@@ -28,7 +31,7 @@ class DataServerTest(TestCase):
 
     def test_should_find_series_by_id(self):
         data_server, series = self.make_data_server_with_one_series()
-        returned_series = data_server.find_series_by_id(series.graph_id)
+        returned_series = data_server.find_series_by_id(series.series_id)
         self.assertEquals(returned_series, series)
 
     def test_should_return_none_if_series_with_specified_id_does_not_exist(self):
