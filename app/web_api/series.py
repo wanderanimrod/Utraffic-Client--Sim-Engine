@@ -15,7 +15,7 @@ class OneSeries(restful.Resource):
             json_data_points = []
             for data_point in data_points:
                 json_data_points.append(data_point.json())
-            return {'dataPoints': json_data_points, "series": series_id}, 200
+            return {'dataPoints': json_data_points, "seriesId": series_id}, 200
         except Exception, ex:
             return {"error": ex.message}, 404
 
