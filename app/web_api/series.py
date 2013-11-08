@@ -6,7 +6,12 @@ from web_api.persistent_data_server import get_data_server
 class OneSeries(restful.Resource):
 
     def get(self, series_id):
-        return {'series': series_id}
+        data_server = get_data_server()
+        try:
+            data_points = data_server.get_data_for_series(series_id)
+            return {'dataPoints': data_points, "series": series_id}, 200
+        except Exception, ex:
+            return {"error": ex.message}, 404
 
 
 class Series(restful.Resource):

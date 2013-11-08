@@ -1,5 +1,5 @@
 class DataServer:
-
+    #Make this a monotone class so we can get rid of centralising instantiation in another script
     def __init__(self):
         self.series = []
 
@@ -28,6 +28,8 @@ class DataServer:
 
     def get_data_for_series(self, series_id):
         series = self.find_series_by_id(series_id)
+        if series is None:
+            raise Exception("Series '%d' does not exist!" % series_id)
         return series.get_data()
 
     def find_series_by_id(self, series_id):
