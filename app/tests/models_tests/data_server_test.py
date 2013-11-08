@@ -1,7 +1,7 @@
 from unittest import TestCase
 from mock import Mock
 from models.data_server import DataServer
-from tests import test_helpers
+from tests.test_utils import test_helpers
 
 
 class DataServerTest(TestCase):
