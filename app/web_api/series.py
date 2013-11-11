@@ -24,5 +24,3 @@ class OneSeries(restful.Resource):
             return {"error": "Series '%d' does not exist" % series_id}, 404
         series = data_server.get_series(series_id)
         return series.json(), 200
-
-
