@@ -12,15 +12,15 @@ class SeriesTest(TestCase):
 
     def test_should_create_series_upon_post(self):
         series_id, post = self.create_new_series()
-        get = self.app.get('/series/%d/data/' % series_id)
-        returned_series_id = extract_value_from_json(get.data, 'seriesId')
+        get = self.app.get('/series/%d/' % series_id)
+        returned_series_id = extract_value_from_json(get.data, 'id')
         self.assertEquals(series_id, returned_series_id)
         self.assertEquals(post.status_code, 201)
 
     def test_should_return_all_details_on_series_upon_request_on_the_series_resource(self):
         series_id, _ = self.create_new_series()
         get = self.app.get('/series/%d/' % series_id)
-        expected_keys = ['seriesId', 'status']
+        expected_keys = ['id', 'status']
         self.assertTrue(json_string_has_expected_keys(get.data, expected_keys))
         self.assertEquals(get.status_code, 200)
 
@@ -33,4 +33,4 @@ class SeriesTest(TestCase):
 
     def create_new_series(self):
         post = self.app.post('/series/')
-        return  extract_value_from_json(post.data, 'seriesId'), post
+        return  extract_value_from_json(post.data, 'id'), post

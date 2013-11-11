@@ -28,6 +28,6 @@ class Series:
 
     def json(self):
         return {
-            'seriesId': self.series_id,
+            'id': self.series_id,
             'status': self.status
         }

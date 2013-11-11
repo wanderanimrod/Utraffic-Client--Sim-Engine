@@ -55,4 +55,4 @@ class SeriesTest(TestCase):
     def test_should_convert_itself_into_json_with_all_fields_other_than_data_points(self):
         series = Series(series_id=10)
         series_json = series.json()
-        self.assertEquals({'seriesId': 10, 'status': 'active'}, series_json)
+        self.assertEquals({'id': 10, 'status': 'active'}, series_json)
