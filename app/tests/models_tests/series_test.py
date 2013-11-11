@@ -51,3 +51,8 @@ class SeriesTest(TestCase):
         data_point = test_helpers.make_data_point()
         self.series.add_data_point(data_point)
         return self.series
+
+    def test_should_convert_itself_into_json_with_all_fields_other_than_data_points(self):
+        series = Series(series_id=10)
+        series_json = series.json()
+        self.assertEquals({'seriesId': 10}, series_json)

@@ -21,3 +21,6 @@ class Series:
         while not self.__data.empty():
             data.append(self.get_data_point())
         return data
+
+    def json(self):
+        return {'seriesId': self.series_id}
