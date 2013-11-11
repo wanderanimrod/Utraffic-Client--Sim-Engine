@@ -63,6 +63,17 @@ class DataServerTest(TestCase):
         returned_series_data = data_server.get_data_for_series(series_id)
         self.assertTrue(data_point in returned_series_data)
 
+    def test_should_get_a_series_given_a_series_id(self):
+        data_server, series = self.make_data_server_with_one_series()
+        returned_series = data_server.get_series(series.series_id)
+        self.assertEquals(returned_series, series)
+
+    def test_should_return_none_if_series_with_specified_id_is_not_found(self):
+        series_id = 'non_existent_series_id'
+        data_server, _ = self.make_data_server_with_one_series()
+        returned_series = data_server.get_series(series_id)
+        self.assertIsNone(returned_series)
+
     def make_data_server_with_two_series(self):
         first_series = test_helpers.make_series()
         second_series = test_helpers.make_series()

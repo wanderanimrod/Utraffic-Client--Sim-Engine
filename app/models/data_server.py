@@ -37,3 +37,6 @@ class DataServer:
             if series.series_id == series_id:
                 return series
         return None
+
+    def get_series(self, series_id):
+        return self.find_series_by_id(series_id)
