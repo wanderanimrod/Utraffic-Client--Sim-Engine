@@ -15,3 +15,10 @@ series.
 We don't have to read data about each translation of a car if the sim is going to be a long one. If we are looking
 for aggregates (like average speed), we can sample at fixed intervals. This will reduce on the size of data in redis,
 and therefore the memory footprint of the application suite
+
+FUTURE IMPROVEMENTS
+--------------------------
+
+** Use [Reverse Ajax / Comet](http://blog.jamieisaacs.com/2010/08/27/comet-with-nginx-and-jquery/) programming to turn
+the whole information passing architecture on its head. The simulator pushes state changes to the Sim-Client Engine and
+the Sim-Client Engine crunches the data and pushes ready data to the browser-based Visualiser. Interesting!!!
