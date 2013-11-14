@@ -5,7 +5,7 @@ from tests.test_utils.setup_some_static_data import make_static_data_points
 from tests.web_api_tests.api_test_helpers import create_new_series
 
 
-class SeriesTest(TestCase):
+class DataTest(TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -19,6 +19,13 @@ class SeriesTest(TestCase):
         returned_data = extract_value_from_json(get.data, 'dataPoints')
         self.assertEquals(expected_data, returned_data)
         self.assertEquals(get.status_code, 200)
+
+    def test_should_return_404_if_data_is_requested_for_inexistent_series(self):
+        inexistent_series_id = 1503
+        get = self.app.get('/series/%d/data/' % inexistent_series_id)
+        expected_get_result = {"error": "Series '%d' does not exist" % inexistent_series_id}
+        self.assertEquals(expected_get_result, json_response_to_dict(get.data))
+        self.assertEquals(get.status_code, 404)
 
 
 def fetch_expected_data():
