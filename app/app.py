@@ -1,10 +1,12 @@
 from flask import Flask
 import flask
+from web_api.response import InsecureResponse
 from web_api.routes import setup_api_routes as activate_web_api_routes
 
 app = Flask(__name__)
 app.debug = True
 app.db = None
+app.response_class = InsecureResponse
 
 
 @app.route('/')

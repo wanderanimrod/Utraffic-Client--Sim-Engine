@@ -1,5 +1,6 @@
-from app import app
 import redis
+
+from app import app
 
 
 def get_db():
