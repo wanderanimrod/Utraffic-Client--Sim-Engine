@@ -1,5 +1,5 @@
 from unittest import TestCase
-from models.series import Series
+from models.series import Series, series_status
 from tests.test_utils import test_helpers
 
 
@@ -7,6 +7,9 @@ class SeriesTest(TestCase):
 
     def setUp(self):
         self.series = test_helpers.make_series()
+
+    def test_should_be_active_on_instantiation(self):
+        self.assertEquals(self.series.status, series_status.ACTIVE)
 
     def test_should_accept_data_points(self):
         data_point = test_helpers.make_data_point()

@@ -15,6 +15,7 @@ class Data(restful.Resource):
             json_data_points = []
             for data_point in data_points:
                 json_data_points.append(data_point.json())
-            return {'dataPoints': json_data_points, "seriesId": series_id}, 200
+            series = data_server.get_series(series_id)
+            return {'dataPoints': json_data_points, "seriesId": series_id, "seriesStatus": series.status}, 200
         except Exception:
             return {"error": "Series '%d' does not exist" % series_id}, 404

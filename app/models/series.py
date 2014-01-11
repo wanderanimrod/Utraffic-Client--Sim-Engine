@@ -1,14 +1,14 @@
 from Queue import Queue, Empty
 from models.enum import enum
 
+series_status = enum(ACTIVE='active', COMPLETE='complete')
+
 
 class Series:
 
-    SERIES_STATUSES = enum(ACTIVE='active', COMPLETE='complete')
-
     def __init__(self, series_id=0):
         self.series_id = series_id
-        self.status = self.SERIES_STATUSES.ACTIVE
+        self.status = series_status.ACTIVE
         self.__data = Queue()
 
     def add_data_point(self, data_point):

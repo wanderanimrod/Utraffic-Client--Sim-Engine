@@ -20,6 +20,18 @@ class DataTest(TestCase):
         self.assertEquals(expected_data, returned_data)
         self.assertEquals(get.status_code, 200)
 
+    def test_should_include_series_id_in_get_data(self):
+        series_id, _ = create_new_series(self.app, with_dummy_data=True)
+        get = self.app.get('/series/%d/data/' % series_id)
+        series_id_in_returned_data = extract_value_from_json(get.data, 'seriesId')
+        self.assertEquals(series_id_in_returned_data, series_id)
+
+    def test_should_include_series_status_in_get_data(self):
+        series_id, _ = create_new_series(self.app, with_dummy_data=True)
+        get = self.app.get('/series/%d/data/' % series_id)
+        series_status = extract_value_from_json(get.data, 'seriesStatus')
+        self.assertEquals(series_status, "complete")
+
     def test_should_return_404_if_data_is_requested_for_inexistent_series(self):
         inexistent_series_id = 1503
         get = self.app.get('/series/%d/data/' % inexistent_series_id)
