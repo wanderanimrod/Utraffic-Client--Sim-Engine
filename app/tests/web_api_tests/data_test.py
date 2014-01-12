@@ -30,6 +30,12 @@ class DataTest(TestCase):
         series_id, _ = create_new_series(self.app, with_dummy_data=True)
         get = self.app.get('/series/%d/data/' % series_id)
         series_status = extract_value_from_json(get.data, 'seriesStatus')
+        self.assertEquals(series_status, "active")
+
+    def test_should_return_series_with_status_complete_if_request_specifies_series_as_dummy(self):
+        series_id, _ = create_new_series(self.app, with_dummy_data=True)
+        get = self.app.get('/series/%d/data/' % series_id + '?dummy_series=true')
+        series_status = extract_value_from_json(get.data, 'seriesStatus')
         self.assertEquals(series_status, "complete")
 
     def test_should_return_404_if_data_is_requested_for_inexistent_series(self):
