@@ -1,5 +1,5 @@
 from Queue import Queue, Empty
-from models.enum import enum
+from enum import enum
 
 series_status = enum(ACTIVE='active', COMPLETE='complete')
 
