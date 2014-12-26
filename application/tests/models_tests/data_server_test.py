@@ -41,13 +41,7 @@ class DataServerTest(TestCase):
         self.assertIsNone(returned_series)
 
     def test_should_throw_exception_if_data_is_requested_for_series_that_does_not_exist(self):
-        #Use assertRaises instead. It is a one liner and it is cleaner.
-        exception_message = "NO_MESSAGE"
-        try:
-            self.data_server.get_data_for_series(-10)
-        except Exception, ex:
-            exception_message = ex.message
-        self.assertEquals("Series '-10' does not exist!", exception_message)
+        self.assertRaises(Exception, self.data_server.get_data_for_series, args=(-10,))
 
     def test_should_serve_all_data_currently_in_a_specified_series(self):
         series, expected_data = test_helpers.make_series_with_two_different_data_points()
