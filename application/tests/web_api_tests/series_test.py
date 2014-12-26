@@ -1,7 +1,9 @@
 from unittest import TestCase
-from app import app
-from tests.test_utils.json_parsers import extract_value_from_json, json_string_has_expected_keys, json_response_to_dict
-from tests.web_api_tests.api_test_helpers import create_new_series
+from application.app import app
+
+from application.tests.test_utils.json_parsers import extract_value_from_json, json_string_has_expected_keys, \
+    json_response_to_dict
+from application.tests.web_api_tests.api_test_helpers import create_new_series
 
 
 class SeriesTest(TestCase):

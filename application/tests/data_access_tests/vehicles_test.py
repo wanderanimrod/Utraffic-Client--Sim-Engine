@@ -1,10 +1,9 @@
 from unittest import TestCase
+from application.data_access import settings
+from application.data_access.vehicles import get_vehicle_snapshots
+from application.tests.test_utils.test_helpers import make_fully_constituted_vehicle_snapshot
 
 import redis
-
-from data_access import settings
-from data_access.vehicles import get_vehicle_snapshots
-from tests.test_utils.test_helpers import make_fully_constituted_vehicle_snapshot
 
 
 class VehiclesTest(TestCase):

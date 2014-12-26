@@ -1,6 +1,6 @@
-from models.series import Series
-from models.data_point import DataPoint
-from models.vehicle_snapshot import VehicleSnapshot
+from application.models.data_point import DataPoint
+from application.models.series import Series
+from application.models.vehicle_snapshot import VehicleSnapshot
 
 
 def make_data_point():

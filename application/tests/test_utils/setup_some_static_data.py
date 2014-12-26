@@ -1,5 +1,4 @@
-from models.data_point import DataPoint
-from models.series import series_status
+from application.models.data_point import DataPoint
 
 
 def make_static_data_points():

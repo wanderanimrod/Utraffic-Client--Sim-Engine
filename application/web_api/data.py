@@ -1,8 +1,8 @@
+from application.models.series import series_status
+from application.tests.test_utils.setup_some_static_data import fill_series_with_static_data
+from application.web_api.persistent_data_server import get_data_server
 from flask import request
 from flask.ext import restful
-from models.series import series_status
-from tests.test_utils.setup_some_static_data import fill_series_with_static_data
-from web_api.persistent_data_server import get_data_server
 
 
 class Data(restful.Resource):

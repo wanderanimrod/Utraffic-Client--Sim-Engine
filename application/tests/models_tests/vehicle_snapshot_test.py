@@ -1,6 +1,6 @@
 from unittest import TestCase
-from tests.test_utils.test_helpers import make_fully_constituted_vehicle_snapshot
-from models.vehicle_snapshot import VehicleSnapshot
+from application.models.vehicle_snapshot import VehicleSnapshot
+from application.tests.test_utils.test_helpers import make_fully_constituted_vehicle_snapshot
 
 
 class VehicleSnapshotTest(TestCase):

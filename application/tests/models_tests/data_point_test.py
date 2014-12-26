@@ -1,5 +1,5 @@
 from unittest import TestCase
-from models.data_point import DataPoint
+from application.models.data_point import DataPoint
 
 
 class DataPointTest(TestCase):

@@ -1,5 +1,5 @@
-from data_access.database import get_db
-from models.vehicle_snapshot import VehicleSnapshot
+from application.data_access.database import get_db
+from application.models.vehicle_snapshot import VehicleSnapshot
 
 db = get_db()
 

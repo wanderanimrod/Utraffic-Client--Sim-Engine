@@ -1,4 +1,4 @@
-from tests.test_utils.json_parsers import extract_value_from_json
+from application.tests.test_utils.json_parsers import extract_value_from_json
 
 
 def create_new_series(app, with_dummy_data=False):

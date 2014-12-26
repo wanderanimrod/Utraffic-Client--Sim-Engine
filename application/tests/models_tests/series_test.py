@@ -1,6 +1,7 @@
 from unittest import TestCase
-from models.series import Series, series_status
-from tests.test_utils import test_helpers
+from application.models.series import series_status
+from application.models.series import Series
+from application.tests.test_utils import test_helpers
 
 
 class SeriesTest(TestCase):

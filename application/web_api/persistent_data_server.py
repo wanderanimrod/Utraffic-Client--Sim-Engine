@@ -1,4 +1,4 @@
-from models.data_server import DataServer
+from application.models.data_server import DataServer
 
 data_server = None
 

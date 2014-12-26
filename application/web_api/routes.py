@@ -1,6 +1,7 @@
 from flask.ext import restful
-from web_api.data import Data
-from web_api.series import Series, OneSeries
+from application.web_api.series import Series
+from application.web_api.data import Data
+from application.web_api.series import OneSeries
 
 
 def setup_api_routes(flask_app):

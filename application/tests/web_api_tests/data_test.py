@@ -1,8 +1,8 @@
 from unittest import TestCase
-from app import app
-from tests.test_utils.json_parsers import extract_value_from_json, json_response_to_dict
-from tests.test_utils.setup_some_static_data import make_static_data_points
-from tests.web_api_tests.api_test_helpers import create_new_series
+from application.app import app
+from application.tests.test_utils.json_parsers import extract_value_from_json, json_response_to_dict
+from application.tests.test_utils.setup_some_static_data import make_static_data_points
+from application.tests.web_api_tests.api_test_helpers import create_new_series
 
 
 class DataTest(TestCase):
